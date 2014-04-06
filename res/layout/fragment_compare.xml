@@ -21,6 +21,6 @@
         android:layout_marginLeft="71dp"
         android:layout_marginTop="64dp"
         android:layout_toRightOf="@+id/section_label"
-        android:text="This is MAIN" />
+        android:text="This is COMPARE" />
 
 </RelativeLayout>

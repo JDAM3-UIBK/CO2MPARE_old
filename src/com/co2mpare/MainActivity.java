@@ -19,8 +19,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.co2mpare.RouteCalc.GoogleDirections;
-import com.co2mpare.logic.*;
+public class MainActivity extends ActionBarActivity {
 
 public class MainActivity extends ActionBarActivity {
 
