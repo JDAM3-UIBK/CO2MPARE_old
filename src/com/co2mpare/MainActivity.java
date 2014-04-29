@@ -2,18 +2,30 @@ package com.co2mpare;
 
 import java.util.Locale;
 
+import com.co2mpare.fragments.Chart;
+import com.co2mpare.fragments.Compare;
+import com.co2mpare.fragments.Login;
+import com.co2mpare.fragments.Main;
+import com.co2mpare.fragments.Map;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -21,8 +33,7 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-public class MainActivity extends ActionBarActivity {
-
+	
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a {@link FragmentPagerAdapter}
@@ -31,49 +42,61 @@ public class MainActivity extends ActionBarActivity {
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-
+	boolean onStartUp=true;
+	boolean enabled=true;
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 
+		
+		
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the activity.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
-
+		
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-
-		GoogleDirections.calcRoute("Innsbruck", "Wien");
-
+		mViewPager.setCurrentItem(1);
+		
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	public void onBackPressed() {
+		
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if ( keyCode == KeyEvent.KEYCODE_MENU ) {
+	        // do nothing
+	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}   
+	
+	
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		/*int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
-		return super.onOptionsItemSelected(item);
+		return super.onOptionsItemSelected(item);*/
+		return false;
 	}
 
 	/**
@@ -81,6 +104,7 @@ public class MainActivity extends ActionBarActivity {
 	 * one of the sections/tabs/pages.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+		
 
 		public SectionsPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -91,13 +115,21 @@ public class MainActivity extends ActionBarActivity {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a PlaceholderFragment (defined as a static inner class
 			// below).
-			return PlaceholderFragment.newInstance(position + 1);
+			
+				switch(position){
+				case 0: return Chart.newInstance(position+1);
+				case 1: return Main.newInstance(position+1);
+				case 2: return Compare.newInstance(position+1);
+				case 3: return Map.newInstance(position+1);
+				}
+			
+			return null;
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			// Show 4 total pages.
+			return 4;
 		}
 
 		@Override
@@ -109,6 +141,8 @@ public class MainActivity extends ActionBarActivity {
 			case 1:
 				return getString(R.string.title_section2).toUpperCase(l);
 			case 2:
+				return getString(R.string.title_section3).toUpperCase(l);
+			case 3:
 				return getString(R.string.title_section3).toUpperCase(l);
 			}
 			return null;
