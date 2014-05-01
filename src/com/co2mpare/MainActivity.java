@@ -2,34 +2,26 @@ package com.co2mpare;
 
 import java.util.Locale;
 
-import com.co2mpare.fragments.Chart;
-import com.co2mpare.fragments.Compare;
-import com.co2mpare.fragments.Login;
-import com.co2mpare.fragments.Main;
-import com.co2mpare.fragments.Map;
-
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.Gravity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+
+import com.co2mpare.fragments.Chart;
+import com.co2mpare.fragments.Compare;
+import com.co2mpare.fragments.Main;
+import com.co2mpare.fragments.Map;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -49,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	ViewPager mViewPager;
 
-	@SuppressLint("NewApi")
+	@SuppressLint({ "NewApi", "Recycle" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,6 +54,8 @@ public class MainActivity extends ActionBarActivity {
 		// primary sections of the activity.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
+		
+		
 		
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
