@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/slide4stats" />
+        android:src="@drawable/slide4back" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/imageView1"
-        android:src="@drawable/slide2calc" />
+        android:src="@drawable/slide4map" />
 
     <TextView
         android:id="@+id/textView1"
@@ -45,5 +45,16 @@
         android:drawSelectorOnTop="false" >
 
     </ListView>
+
+    <Button
+        android:id="@+id/cfbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btnbg"
+        android:text="Button"
+        android:textColor="#009900"
+        android:textSize="25sp" />
 
 </RelativeLayout>

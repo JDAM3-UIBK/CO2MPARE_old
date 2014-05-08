@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerInParent="false"
         android:layout_marginTop="15dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"> 
 
     </LinearLayout>
 
@@ -93,7 +93,11 @@
         android:fitsSystemWindows="false"
         android:hint="To"
         android:inputType="textPersonName"
-        android:paddingTop="30dp" />
+        android:paddingTop="30dp" >
+        
+        
+        
+        </EditText>
 
     <EditText
         android:id="@+id/editText1"
@@ -106,9 +110,9 @@
         android:fitsSystemWindows="false"
         android:hint="From"
         android:inputType="textPersonName" >
-
+        
         <requestFocus />
-    </EditText>
+         </EditText>
 
     <ImageView
         android:id="@+id/imageView5"

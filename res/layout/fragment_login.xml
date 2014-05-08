@@ -97,7 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
+            android:height="30dp"
+            android:scrollHorizontally="true"
             android:text="Continue as guest" />
 
         <TextView
@@ -106,6 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
+            android:height="30dp"
             android:text="Forgot your password?" />
 
     </RelativeLayout>
